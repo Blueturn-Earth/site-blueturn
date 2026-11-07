@@ -1,0 +1,362 @@
+/* Shared Projector.Earth document chrome (user guides + whitepaper).
+   Star map in the page margins; the reading column is Earth-colored paper. */
+
+:root {
+  --space: #081018;
+  --paper: #f3efe4;
+  --cloud: #fffefb;
+  --ink: #1e1914;
+  --muted: #5a5148;
+  --ocean: #1b6aae;
+  --ocean-deep: #134e82;
+  --forest: #2f7a3d;
+  --leaf: #3d8f4a;
+  --soil: #7a5533;
+  --sand: #d9cbb3;
+  --line: #cfc3b0;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-padding-top: 7rem;
+}
+
+html, body {
+  margin: 0;
+  background: var(--space);
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  line-height: 1.55;
+}
+
+.space-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--space);
+  background-image: url("stars.jpg");
+  background-position: center 40%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.78;
+}
+
+.site-chrome {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1.15rem;
+  padding: 0.45rem 1.25rem 0.4rem;
+  background: rgba(8, 16, 24, 0.88);
+  color: var(--paper);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--paper);
+  text-decoration: none;
+}
+
+.brand-logo {
+  display: block;
+  height: 4.7rem;
+  width: auto;
+}
+
+.brand-kind {
+  font-size: 0.95rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: var(--sand);
+  border-left: 1px solid rgba(217, 203, 179, 0.35);
+  padding-left: 0.8rem;
+  line-height: 1.2;
+}
+
+.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+}
+
+.site-header nav a {
+  color: #d5d0c6;
+  text-decoration: none;
+}
+
+.site-header nav a[aria-current="page"],
+.site-header nav a:hover {
+  color: #9ee0a8;
+}
+
+.open-app {
+  margin-left: auto;
+  color: var(--cloud);
+  background: var(--ocean);
+  text-decoration: none;
+  font-weight: 650;
+  font-size: 0.88rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+}
+
+.open-app:hover {
+  background: var(--forest);
+}
+
+.earth-band {
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    #1b6aae 0%,
+    #2f7a3d 30%,
+    #c4a574 58%,
+    #7a5533 78%,
+    #1b6aae 100%
+  );
+}
+
+.page-shell {
+  position: relative;
+  z-index: 1;
+  max-width: 52rem;
+  margin: 1.15rem auto 2.75rem;
+  background: var(--paper);
+  box-shadow:
+    0 0 0 1px rgba(122, 85, 51, 0.14),
+    0 16px 40px rgba(0, 0, 0, 0.38);
+}
+
+main.guide {
+  padding: 1.6rem 1.45rem 3.25rem;
+}
+
+.guide h1, .guide h2, .guide h3 {
+  line-height: 1.25;
+}
+
+.guide h1 {
+  font-size: 1.72rem;
+  margin: 0 0 0.85rem;
+  color: var(--ocean-deep);
+}
+
+.guide h1 + p {
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+.guide h2 {
+  margin-top: 2rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid var(--line);
+  font-size: 1.2rem;
+  color: var(--forest);
+  scroll-margin-top: 7rem;
+}
+
+.guide h3 {
+  color: var(--soil);
+  font-size: 1.05rem;
+}
+
+.guide a { color: var(--ocean); }
+.guide a:hover { color: var(--forest); }
+
+.guide img,
+.guide video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0 0.4rem;
+  border: 1px solid var(--sand);
+  background: #0b1220;
+}
+
+.guide p:has(> img) + p,
+.guide p:has(> video) + p,
+.guide video + p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 0;
+  margin-bottom: 1.6rem;
+}
+
+.guide table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  margin: 1rem 0;
+  background: var(--cloud);
+}
+
+.guide th, .guide td {
+  border: 1px solid var(--line);
+  padding: 0.4rem 0.55rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.guide th {
+  background: #e4efe3;
+  color: var(--forest);
+}
+
+.guide code {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.88em;
+  background: #ece6da;
+  padding: 0.05em 0.28em;
+}
+
+.guide pre {
+  background: #ece6da;
+  border: 1px solid var(--line);
+  padding: 0.75rem 0.9rem;
+  overflow: auto;
+}
+
+.guide pre code {
+  background: none;
+  padding: 0;
+}
+
+.guide blockquote {
+  margin: 1rem 0;
+  padding: 0.15rem 0 0.15rem 1rem;
+  border-left: 3px solid var(--ocean);
+  color: var(--muted);
+}
+
+.guide hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 1.5rem 0;
+}
+
+.guide p, .guide li {
+  color: var(--ink);
+}
+
+.site-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  padding: 1rem 1.25rem 1.4rem;
+  color: var(--sand);
+  background: rgba(8, 16, 24, 0.78);
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--paper);
+  text-decoration: none;
+  font-weight: 650;
+}
+
+.footer-logo {
+  display: block;
+  height: 2.4rem;
+  width: auto;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin-left: auto;
+}
+
+.footer-nav a {
+  color: var(--sand);
+  text-decoration: none;
+}
+
+.footer-nav a:hover {
+  color: #9ee0a8;
+}
+
+a:focus-visible {
+  outline: 2px solid #9ee0a8;
+  outline-offset: 2px;
+}
+
+::selection {
+  background: #c5e6d4;
+  color: var(--ink);
+}
+
+@media (max-width: 56rem) {
+  .page-shell {
+    margin: 0.7rem 0.65rem 1.75rem;
+  }
+
+  main.guide {
+    padding: 1.25rem 1rem 2.5rem;
+  }
+}
+
+@media print {
+  .space-bg { display: none; }
+
+  html, body {
+    background: #fff;
+    color: var(--ink);
+  }
+
+  .site-chrome {
+    position: static;
+  }
+
+  .site-header {
+    background: #fff;
+    color: var(--ink);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .brand,
+  .brand-kind,
+  .site-header nav a {
+    color: var(--ocean-deep);
+  }
+
+  .open-app {
+    background: none;
+    color: var(--ocean);
+    padding: 0;
+  }
+
+  .page-shell {
+    margin: 0;
+    box-shadow: none;
+    max-width: none;
+  }
+
+  main.guide { padding: 1rem 0 2rem; }
+
+  .site-footer {
+    background: none;
+    color: var(--muted);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .footer-brand { color: var(--ink); }
+  .footer-nav a { color: var(--ocean); }
+}
